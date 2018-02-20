@@ -12,6 +12,9 @@ var planets = [];
 var id = -1;
 
 function Planet(config) {
+    if(!config || typeof config != "object"){
+        return;
+    }
     id++;
     this.id = id,
         this.name = config.name,
