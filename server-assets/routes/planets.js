@@ -32,7 +32,6 @@ router.get('/api/planets/:id', (req, res, next) => {
 // });
 
 
-
 // CREATE A PLANET
 router.post('/api/planets', (req, res, next) => {
     Planets.create(req.body)
@@ -42,6 +41,13 @@ router.post('/api/planets', (req, res, next) => {
         .catch(err => res.status(400).send(err));
 });
 
+// DELETE A PLANET
+// come back here
+router.delete('/api/planets/:id', (req, res, next) => {
+    Planets.findByIdAndRemove(req.params._id, (err, planet) => {
+        console.log("Planet successfully deleted!")
+    });
+});
 
 function findById(collection, id) {
     for (let i = 0; i < collection.length; i++) {
@@ -51,10 +57,5 @@ function findById(collection, id) {
         }
     }
 }
-
-
-router.get('*', (req, res, next) => {
-    res.status(404).send('<h1>404</h1>')
-});
 
 module.exports = router;
