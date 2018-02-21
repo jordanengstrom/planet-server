@@ -10,6 +10,8 @@ require('./server-assets/db/mlab-config');
 //ROUTES
 let planetRoutes = require('./server-assets/routes/planets');
 let moonRoutes = require('./server-assets/routes/moons');
+let starRoutes = require('./server-assets/routes/stars');
+
 
 
 // SERVER SETUP
@@ -23,6 +25,7 @@ server.get('/', (req, res, next) => {
 
 server.use(planetRoutes);
 server.use(moonRoutes);
+server.use(starRoutes);
 
 
 server.use('*', (req, res, next) => {
